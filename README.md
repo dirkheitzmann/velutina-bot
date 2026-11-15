@@ -10,7 +10,7 @@ Was also liegt näher die Meldung über Whatsapp und die Erkennung automatisiert
 
 Hierfür gibt es diverse Möglichkeiten, von denen ich mich für "Velu DEtect" (https://universe.roboflow.com/vespavelutina/velu-detect) entschieden habe.
 
-Im Prinzip teils sich das Ganze in 3 Bereiche auf:
+Im Prinzip teilt sich das Ganze in 3 Bereiche auf:
 1. Ein eigener (v)Server, öffentlich erreichbar und unser Arbeitstier.
 2. Ein Account (free) bei RoboFlow (https://app.roboflow.com/)
 3. Ein META-Business-Account für den WhatsApp-Teil 
@@ -54,6 +54,9 @@ Wir gehen also von einem funktionierden Linux-vServer, hier unter Ubuntu, aus.
     source venv/bin/activate
     pip install fastapi uvicorn requests python-dotenv
 
+    - Datei mit Umgebungsvariablen erstellen
+    cp .env.template .env
+
 
 #### nginx konfigurieren
 
@@ -92,6 +95,25 @@ Dienst einrichten, aktivieren und starten:
 ## RoboFlow und Velu DEtect
 
 Fotos lassen sich über spezialisierte KI-Webtools und Smartphone-Apps wie VeluDetect, HornetLog oder die velutina-App automatisch auf die Asiatische Hornisse (Vespa velutina) prüfen. Diese Dienste unterscheiden per Bilderkennung in wenigen Sekunden zwischen der invasiven Art, der heimischen Europäischen Hornisse und anderen Wespen.
+
+### Einen Account erstellen
+
+Unter https://app.roboflow.com/login geht das ganz einfach:
+
+1. Anmeldeoption hier auswählen (anders oder wie hier "Continue with Email")
+   Nach Eingabe deiber EMail-Adresse bekommst du einen Link zur Bestätigung geschickt.
+
+2. In der empfdangene Email auf "Sign in to Roboflow" klicken.
+3. Name eingeben und die Bedingungen akzeptieren.
+4. Für den Workspace kann man einen beliebigen Namen verwenden. Auch der vorgeschlagene "Core-Plan" ist ausreichend.
+5. Die nächsten Schritte kann man einfach mit "Skip" (unten links) überspringen.
+
+### API Key finden und kopieren
+
+Unter "Settings"->"API Keys" findet sich unter "Private API Key" ein APIKey, der für den Aurif benötigt wird.
+Sollte dies noch nicht der Fall sein, dann kannst Du mit "Generate New Key" einen ApiKey geniereien und kopieren.
+
+Den kopierten API-Key tragen wir in die Datei .env (in /home/velutina/velutina-bot) ein. 
 
 
 ## Meta Business und WhatsApp
