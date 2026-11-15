@@ -7,7 +7,7 @@ Um die Bevölkerung bei der Suche nach Vespa Velutina und deren Nestern werden �
 All dies bedeutet, zumindest für den Inhaber der Whatsapp-Nummer oder den Ehrenamtlichen beim Imkerverein manuelle Arbeit bei der Beuurteilung der Bilder.
 Was also liegt näher die Meldung über Whatsapp und die Erkennung automatisiert über ein KI laufen zu lassen ?
 
-Hierfür gibt es diverse Möglichkeiten, von denen ich mich für VeluDetect (https://universe.roboflow.com/vespavelutina/velu-detect) entschieden habe.
+Hierfür gibt es diverse Möglichkeiten, von denen ich mich für "Velu DEtect" (https://universe.roboflow.com/vespavelutina/velu-detect) entschieden habe.
 
 Im Prinzip teils sich das Ganze in 3 Bereiche auf:
 1. Ein eigener (v)Server, öffentlich erreichbar und unser Arbeitstier.
@@ -17,11 +17,11 @@ Im Prinzip teils sich das Ganze in 3 Bereiche auf:
 
 ## Der eigene Server und dessen Konfiguration
 
-Im Prinzip tut es hier jeder noch so kleine Liunx-Server der im Internet offentlich erreichbar ist.
-Aber auch ein schon vorhandener Server, der z.-B. für die Vereins-Webseite genutzt wird, reicht schon aus.
+Im Prinzip tut es hier jeder noch so kleine Linux-Server der im Internet offentlich erreichbar ist.
+Aber auch ein schon vorhandener Server, der z.B. für die Vereins-Webseite genutzt wird, reicht schon aus.
 
 Shared-Hosting wird aber wohl eher nicht funktionieren.
-Sollte das jemand so aufsetzen,, dann gerne ein Update mit Beschriebung an mich.
+Sollte das jemand so aufsetzen,, dann gerne ein Update mit Beschreibung an mich.
 
 ### Server Konfiguration
 
@@ -38,19 +38,23 @@ Wir gehen also von einem funktionierden Linux-vServer, hier unter Ubuntu, aus.
     adduser velutina
     
 #### Aktuellen Benutzer einrichten und vorbereiten
+    
+    - Benutzer und Verzeichnisse anlegen
     sudo su - velutina
     mkdir -p ~/velutina-bot/bilder
+
+    - Code holen
+    git clone https://github.com/dirkheitzmann/velutina-bot
+
+    - Umgebung einrichten
     cd ~/velutina-bot
 
     python3 -m venv venv
     source venv/bin/activate
     pip install fastapi uvicorn requests python-dotenv
 
-#### Aktuelle Version via git holen
 
-
-
-#### nginx kongigurienen
+#### nginx konfigurieren
 
     sudo ufw allow 'Nginx Full'
 
