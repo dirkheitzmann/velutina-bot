@@ -1,0 +1,14 @@
+[Unit]
+Description=Velutina WhatsApp Melde-Bot
+After=network.target
+
+[Service]
+User=velutina
+WorkingDirectory=/home/velutina/velutina-bot
+ExecStart=/home/velutina/velutina-bot/venv/bin/uvicorn bot:app --host 127.0.0.1 --port 8000
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+
